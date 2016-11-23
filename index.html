@@ -1,16 +1,83 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background: #ccc;
+        }
+
+        header, main, footer {
+            max-width: 50em;
+        }
+
+        header {
+            text-align: center;
+            padding: 1.5em;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 1.5em;
+        }
+
+        main div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        main div.card {
+            padding: 1em;
+            margin: 1em;
+            text-align: center;
+        }
+
+        .card {
+            border-radius: 2px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 12px 0 rgba(0, 0, 0, 0.19);
+            background: #e5e5e5;
+        }
+    </style>
 </head>
 <body>
-    <div id="container">
+    <header>
         <h1>Cellular Automata</h1>
-        <ul>
-            <li><a href="./rule-73/">Rule 73</a></li>
-            <li><a href="./rule-90/">Rule 90</a></li>
-            <li><a href="./rule-109/">Rule 109</a></li>
-            <li><a href="./rule-182/">Rule 182</a></li>
-        </ul>
-    </div>
+        <p>
+            These are some examples of cellular auotmata impelementations inspired by
+            <a href="https://www.youtube.com/watch?v=bc-fVdbjAwk">pair programming with funfunfunction.</a>  I'll be adding more soon and
+            generally using this as fun sample project so come back again!
+        </p>
+        <p>
+            Please check out the code on Github and tell me what you think!
+        </p>
+
+        <nav>
+            <a class="github-button" href="https://github.com/chazzlabs/cellular-automata"
+                data-icon="octicon-star" data-style="mega" aria-label="Star chazzlabs/cellular-automata on GitHub">Star</a>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <div class="card">
+                <a href="./rule-73/">Rule 73</a>
+            </div>
+            <div class="card">
+                <a href="./rule-90/">Rule 90</a>
+            </div>
+            <div class="card">
+                <a href="./rule-109/">Rule 109</a>
+            </div>
+            <div class="card">
+                <a href="./rule-182/">Rule 182</a>
+            </div>
+        <div>
+    </main>
+    <footer>
+    </footer>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
