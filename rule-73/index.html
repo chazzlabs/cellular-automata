@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="container"></div>
+
+    <script src="../automata-engine.js"></script>
+    <script>
+        // Rule 73: http://atlas.wolfram.com/01/01/73/
+        let rules = [
+            { matchers: [1,1,1], result: false },
+            { matchers: [1,1,0], result: true },
+            { matchers: [1,0,1], result: false },
+            { matchers: [1,0,0], result: false },
+            { matchers: [0,1,1], result: true },
+            { matchers: [0,1,0], result: false },
+            { matchers: [0,0,1], result: false },
+            { matchers: [0,0,0], result: true }
+        ];
+
+        window.startAutomata(rules);
+    </script>
+</body>
+</html>

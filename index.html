@@ -1,152 +1,16 @@
 <html>
 <head>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        #container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .cell {
-            width: 12px;
-            height: 12px;
-            background-color: #d9c6c6;
-            display: inline-block;
-        }
-
-        .cell.active {
-            background-color: #36c336;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container"></div>
-
-    <script>
-        let container = document.getElementById('container');
-
-        // Rule 182: http://atlas.wolfram.com/01/01/182/
-        let rules = [
-            { matchers: [1,1,1], result: true },
-            { matchers: [1,1,0], result: false },
-            { matchers: [1,0,1], result: true },
-            { matchers: [1,0,0], result: true },
-            { matchers: [0,1,1], result: false },
-            { matchers: [0,1,0], result: true },
-            { matchers: [0,0,1], result: true },
-            { matchers: [0,0,0], result: false }
-        ];
-
-
-        // Rule 90: http://atlas.wolfram.com/01/01/90/
-        /* let rules = [
-            { matchers: [1,1,1], result: false },
-            { matchers: [1,1,0], result: true },
-            { matchers: [1,0,1], result: false },
-            { matchers: [1,0,0], result: true },
-            { matchers: [0,1,1], result: true },
-            { matchers: [0,1,0], result: false },
-            { matchers: [0,0,1], result: true },
-            { matchers: [0,0,0], result: false }
-        ]; */
-
-        // Rule 109: http://atlas.wolfram.com/01/01/109/
-        /* let rules = [
-            { matchers: [1,1,1], result: false },
-            { matchers: [1,1,0], result: true },
-            { matchers: [1,0,1], result: true },
-            { matchers: [1,0,0], result: false },
-            { matchers: [0,1,1], result: true },
-            { matchers: [0,1,0], result: true },
-            { matchers: [0,0,1], result: false },
-            { matchers: [0,0,0], result: true }
-        ]; */
-
-        // Rule 73: http://atlas.wolfram.com/01/01/73/
-        /* let rules = [
-            { matchers: [1,1,1], result: false },
-            { matchers: [1,1,0], result: true },
-            { matchers: [1,0,1], result: false },
-            { matchers: [1,0,0], result: false },
-            { matchers: [0,1,1], result: true },
-            { matchers: [0,1,0], result: false },
-            { matchers: [0,0,1], result: false },
-            { matchers: [0,0,0], result: true }
-        ]; */
-
-        function getRandomBinary() {
-            return Math.floor(Math.random() * (2));
-        }
-
-        function setActive(node, active) {
-            active ? node.classList.add('active') : node.classList.remove('active');
-        }
-
-        function createRandomRow() {
-            let row = document.createElement('div');
-            row.classList.add('row');
-
-            let cells = document.body.clientWidth / 13;
-
-            for (let i = 0; i < cells; i++) {
-                let cell = document.createElement('div');
-                cell.classList.add('cell');
-
-                if (getRandomBinary()) {
-                    setActive(cell, true);
-                }
-
-                row.appendChild(cell);
-            }
-
-            container.appendChild(row);
-        }
-
-        function duplicateRow() {
-            let lastRow = container.lastChild;
-            let clone = lastRow.cloneNode(true);
-            container.appendChild(clone);
-
-            processRow(clone, lastRow);
-        }
-
-        function isActive(cell) {
-            return cell.classList.contains('active') ? 1 : 0
-        }
-
-        function setActiveIfMatchesRule(target, leftSibling, prevSelf, rightSibling, rule, ruleValue) {
-            let matchesRule =
-                isActive(leftSibling) === rule[0] &&
-                isActive(prevSelf) === rule[1] &&
-                isActive(rightSibling) === rule[2];
-
-            if(matchesRule) {
-                setActive(target, ruleValue);
-            }
-        }
-
-        function processRow(row, parentRow) {
-            for (let i = 0; i < row.childNodes.length; i++) {
-                let target = row.childNodes[i];
-                let prevSelf = parentRow.childNodes[i];
-                let leftSibling = prevSelf.previousElementSibling || parentRow.lastChild;
-                let rightSibling = prevSelf.nextElementSibling || parentRow.firstChild;
-
-                let toggleClass = setActiveIfMatchesRule.bind(null, target, leftSibling, prevSelf, rightSibling);
-
-                rules.forEach(function(rule) {
-                    toggleClass(rule.matchers, rule.result);
-                });
-            }
-        }
-
-        createRandomRow();
-        setInterval(duplicateRow, 100);
-    </script>
+    <div id="container">
+        <h1>Cellular Automata</h1>
+        <ul>
+            <li><a href="./rule-73/">Rule 73</a></li>
+            <li><a href="./rule-90/">Rule 90</a></li>
+            <li><a href="./rule-109/">Rule 109</a></li>
+            <li><a href="./rule-182/">Rule 182</a></li>
+        </ul>
+    </div>
 </body>
 </html>
