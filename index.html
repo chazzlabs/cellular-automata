@@ -1,6 +1,17 @@
 <html>
 <head>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .cell {
             width: 12px;
             height: 12px;
@@ -80,7 +91,11 @@
             let row = document.createElement('div');
             row.classList.add('row');
 
-            for (let i = 0; i < 101; i++) {
+            let cells = document.body.clientWidth / 13;
+
+            console.log(cells);
+
+            for (let i = 0; i < cells; i++) {
                 let cell = document.createElement('div');
                 cell.classList.add('cell');
 
